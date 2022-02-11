@@ -1,18 +1,21 @@
 // declarations
 require('dotenv').config()
-const { ENVIRONMENT, PORT } = process.env;
+const {ENVIROMENT, PORT} = process.env;
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-// routes improt
-const catsRoutes = require('./routes/catsRoutes')
+// db connection
+const db = require('./configs/db.config'); 
+
+// routes import
+const catsRoutes = require('./routes/catsRoutes');
 
 
 const app = express();
 
 // middleware setup
-app.use(morgan(ENVIRONMENT));
+app.use(morgan(ENVIROMENT));
 app.use(bodyParser.json());
 
 // routes
